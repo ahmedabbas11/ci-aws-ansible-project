@@ -11,7 +11,7 @@ jobs:
       - run:
           name: test connection
           command: |
-            ls /root/.ssh/
+            sudo ls /root/.ssh/
 workflows:
   myWorkflow:
     jobs:
