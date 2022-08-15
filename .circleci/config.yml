@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   configure_infrastructure: 
     docker:
-      - image: python:3.7-alpine3.11
+      - image: amazon/aws-cli
     steps:
       - checkout
       - add_ssh_keys:
@@ -11,11 +11,12 @@ jobs:
       - run:
           name: Install Ansible
           command: |
-            apk add --update ansible
+            ssh ubuntu@3.235.50.197
       - run:
           name: Run Playbook and Configure server
           command: |
-            ansible-playbook -i inventory main-remote.yml -vvvv
+            #ansible-playbook -i inventory main-remote.yml -vvvv
+            echo abbas
 
 workflows:
   myWorkflow:
