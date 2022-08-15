@@ -3,21 +3,15 @@ version: 2.1
 jobs:
   configure_infrastructure: 
     docker:
-      - image: amazon/aws-cli
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - add_ssh_keys:
           fingerprints: ["cf:8b:46:ed:e3:f9:13:20:4d:8e:e4:58:e0:08:9b:ea"] 
       - run:
-          name: Install Ansible
+          name: test connection
           command: |
             ssh ubuntu@3.235.50.197
-      - run:
-          name: Run Playbook and Configure server
-          command: |
-            #ansible-playbook -i inventory main-remote.yml -vvvv
-            echo abbas
-
 workflows:
   myWorkflow:
     jobs:
