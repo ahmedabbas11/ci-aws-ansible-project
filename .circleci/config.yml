@@ -1,6 +1,19 @@
 version: 2.1
 
 jobs:
+  test_connection: 
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+      - checkout
+      - add_ssh_keys:
+              # You can get this ID in the section where you registered the SSH Key
+              fingerprints: ["cf:8b:46:ed:e3:f9:13:20:4d:8e:e4:58:e0:08:9b:ea"] 
+      - run:
+          name: test ssh connection
+          command: |
+            # Your command
+            ssh ubuntu@3.235.50.197
   configure_infrastructure: 
     docker:
       - image: python:3.7-alpine3.11
@@ -23,4 +36,5 @@ jobs:
 workflows:
   myWorkflow:
     jobs:
+      - test_connection
       - configure_infrastructure
