@@ -1,7 +1,6 @@
 ---
 - name: setup a webserver in an ec2
   hosts: all
-  gather_facts: no
   user: ubuntu
   become: true
   become_method: sudo
